@@ -1,0 +1,23 @@
+*,*:before,*:after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+h1,h2,h3,h4,h5,h6,p {
+  margin: 0;
+}
+
+input, select, textarea, button {
+  font-family: inherit;
+  font-size: 1em;
+}

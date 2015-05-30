@@ -1,0 +1,20 @@
+//config
+$grid-gutter: 15px;
+$body-font: sans-serif;
+$title-font: sans-serif;
+$sizes: (
+    s: 450px,
+    m: 600px,
+    l: 800px,
+    xl: 1000px
+  );
+
+//framework
+@import 'framework/framework';
+
+//base
+@import 'base';
+
+//modules
+
+//layouts
