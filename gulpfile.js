@@ -2,12 +2,18 @@ var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var rimraf = require('rimraf');
 
+var errorHandler = function(error) {
+  $.util.log(error.toString());
+  this.emit('end');
+};
+
 gulp.task('clean', function(done) {
   rimraf('build', done);
 });
 
 gulp.task('styles', function() {
   return gulp.src('src/styles/*.scss')
+    .pipe($.plumber(errorHandler))
     .pipe($.sass())
     .pipe($.autoprefixer())
     .pipe(gulp.dest('build/styles'))
@@ -19,6 +25,7 @@ gulp.task('styles', function() {
 
 gulp.task('scripts', function() {
   return gulp.src(['src/scripts/init.js', 'src/scripts/modules/*.js'])
+    .pipe($.plumber(errorHandler))
     .pipe($.jshint())
     .pipe($.concat('scripts.js'))
     .pipe(gulp.dest('build/scripts'))
@@ -30,6 +37,7 @@ gulp.task('scripts', function() {
 
 gulp.task('html', function() {
   return gulp.src('src/**/[^_]*.jade')
+    .pipe($.plumber(errorHandler))
     .pipe($.jade())
     .pipe(gulp.dest('build'))
     .pipe($.connect.reload());
@@ -37,6 +45,7 @@ gulp.task('html', function() {
 
 gulp.task('images', function() {
   return gulp.src('src/images/**/*.{svg,png,jpg,gif}')
+    .pipe($.plumber(errorHandler))
     .pipe(gulp.dest('build/images'))
     .pipe($.connect.reload());
 });
