@@ -1,8 +1,11 @@
-*,*:before,*:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
 html {
+  font-family: $body-font;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -13,11 +16,33 @@ body {
   padding: 0;
 }
 
-h1,h2,h3,h4,h5,h6,p {
-  margin: 0;
+h1,
+h2,
+h3 {
+  font-family: $title-font;
 }
 
-input, select, textarea, button {
+h1,
+h2,
+h3,
+//if you really really need h4-h6, uncomment this
+// h4,
+// h5,
+// h6,
+p {
+  margin: 0;
+
+  * + & {
+    margin-top: $grid-gutter;
+  }
+}
+
+
+
+input,
+select,
+textarea,
+button {
   font-family: inherit;
   font-size: 1em;
 }
